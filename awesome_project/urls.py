@@ -21,4 +21,5 @@ from user import views as users
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('/', users.home),
+     path('api-auth/', include('rest_framework.urls'))
 ]
