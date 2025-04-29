@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'todo'
+    'todo',
 ]
 
 MIDDLEWARE = [
@@ -79,18 +79,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
-# DATABASES = {
-    "default": {
-        "ENGINE": "mssql",
-        "NAME": "Awesome_project",
-        "USER": "sa",
-        "PASSWORD": "12345",
-        "HOST": "DESKTOP-NNL8VPH\SQLEXPRESS",
-        "PORT": "",
-        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
-        },
-    },
 }
 
 # Password validation
