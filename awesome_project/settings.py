@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+import urllib
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,10 +76,43 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+DB_DRIVER = "ODBC Driver 17 for SQL Server"
+DB_SERVER = os.getenv("DB_SERVER", "DESKTOP-NNL8VPH\SQLEXPRESS")
+DB_NAME = os.getenv("DB_NAME", "Django_Blog")
+DB_USER = os.getenv("DB_USER", "")
+DB_PASSWORD = os.getenv("DB_PASS", "")
+
+params = urllib.parse.quote_plus(
+    f"DRIVER={DB_DRIVER};"
+    f"SERVER={DB_SERVER};"
+    f"DATABASE={DB_NAME};"
+    f"UID={DB_USER};"
+    f"PWD={DB_PASSWORD};"
+    "Encrypt=yes;"
+    "TrustServerCertificate=yes;"
+    "Connection Timeout=30;"
+)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': DB_NAME,
+        'OPTIONS': {
+            'driver': DB_DRIVER,
+            'extra_params': "TrustServerCertificate=yes;",
+            'dsn': None,
+            'host_is_server': True,
+            'unicode_results': True,
+            'connection_string': f"mssql+pyodbc:///?odbc_connect={params}"
+        },
     }
 }
 
