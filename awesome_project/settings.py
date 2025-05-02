@@ -82,39 +82,20 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
-
-DB_DRIVER = "ODBC Driver 17 for SQL Server"
-DB_SERVER = os.getenv("DB_SERVER", "DESKTOP-NNL8VPH\SQLEXPRESS")
-DB_NAME = os.getenv("DB_NAME", "Django_Blog")
-DB_USER = os.getenv("DB_USER", "")
-DB_PASSWORD = os.getenv("DB_PASS", "")
-
-params = urllib.parse.quote_plus(
-    f"DRIVER={DB_DRIVER};"
-    f"SERVER={DB_SERVER};"
-    f"DATABASE={DB_NAME};"
-    f"UID={DB_USER};"
-    f"PWD={DB_PASSWORD};"
-    "Encrypt=yes;"
-    "TrustServerCertificate=yes;"
-    "Connection Timeout=30;"
-)
-
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': DB_NAME,
+        'NAME': 'Django_Blog',
+        'USER': 'sa',  # or your DB username
+        'PASSWORD': '12345',
+        'HOST': 'localhost',  # or your SQL Server hostname
         'OPTIONS': {
-            'driver': DB_DRIVER,
-            'extra_params': "TrustServerCertificate=yes;",
-            'dsn': None,
-            'host_is_server': True,
-            'unicode_results': True,
-            'connection_string': f"mssql+pyodbc:///?odbc_connect={params}"
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;',
         },
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
