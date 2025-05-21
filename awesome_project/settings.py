@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    # 'blog',
+    'todo'
 ]
 
 MIDDLEWARE = [
@@ -87,8 +88,8 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 DB_DRIVER = "ODBC Driver 17 for SQL Server"
 DB_SERVER = os.getenv("DB_SERVER", "DESKTOP-NNL8VPH\SQLEXPRESS")
 DB_NAME = os.getenv("DB_NAME", "Django_Blog")
-DB_USER = os.getenv("DB_USER", "")
-DB_PASSWORD = os.getenv("DB_PASS", "")
+DB_USER = os.getenv("DB_USER", "sa")
+DB_PASSWORD = os.getenv("DB_PASS", "12345")
 
 params = urllib.parse.quote_plus(
     f"DRIVER={DB_DRIVER};"
