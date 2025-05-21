@@ -105,17 +105,17 @@ params = urllib.parse.quote_plus(
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': DB_NAME,
+        'NAME': 'Django_Blog',
+        'USER': 'sa',  # or your DB username
+        'PASSWORD': '12345',
+        'HOST': 'localhost',  # or your SQL Server hostname
         'OPTIONS': {
-            'driver': DB_DRIVER,
-            'extra_params': "TrustServerCertificate=yes;",
-            'dsn': None,
-            'host_is_server': True,
-            'unicode_results': True,
-            'connection_string': f"mssql+pyodbc:///?odbc_connect={params}"
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;',
         },
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
