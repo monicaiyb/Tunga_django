@@ -13,6 +13,7 @@ venv.bak/
 *.pyc
 __pycache__
 *__pycache__
+*/_pycache__
 db.sqlite3
 media
 
@@ -28,4 +29,4 @@ media
 .idea/**/shelf
 
 # AWS User-specific
-.idea/**/aws.xml
+.idea/**/aws.xml 
