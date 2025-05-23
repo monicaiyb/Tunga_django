@@ -85,28 +85,42 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 # }
 
 
-DB_DRIVER = "ODBC Driver 17 for SQL Server"
-DB_SERVER = os.getenv("DB_SERVER", "DESKTOP-NNL8VPH\SQLEXPRESS")
-DB_NAME = os.getenv("DB_NAME", "Django_Blog")
-DB_USER = os.getenv("DB_USER", "sa")
-DB_PASSWORD = os.getenv("DB_PASS", "12345")
+# DB_DRIVER = "ODBC Driver 17 for SQL Server"
+# DB_SERVER = os.getenv("DB_SERVER", "DESKTOP-NNL8VPH\SQLEXPRESS")
+# DB_NAME = os.getenv("DB_NAME", "Django_Blog")
+# DB_USER = os.getenv("DB_USER", "sa")
+# DB_PASSWORD = os.getenv("DB_PASS", "12345")
 
-params = urllib.parse.quote_plus(
-    f"DRIVER={DB_DRIVER};"
-    f"SERVER={DB_SERVER};"
-    f"DATABASE={DB_NAME};"
-    f"UID={DB_USER};"
-    f"PWD={DB_PASSWORD};"
-    "Encrypt=yes;"
-    "TrustServerCertificate=yes;"
-    "Connection Timeout=30;"
-)
+# params = urllib.parse.quote_plus(
+#     f"DRIVER={DB_DRIVER};  "
+#     f"SERVER={DB_SERVER};"
+#     f"DATABASE={DB_NAME};"
+#     f"UID={DB_USER};"
+#     f"PWD={DB_PASSWORD};"
+#     "Encrypt=yes;"
+#     "TrustServerCertificate=yes;"
+#     "Connection Timeout=30;"
+# )
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': 'Django_Blog',
+#         'USER': 'sa',  # or your DB username
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',  # or your SQL Server hostname
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;',
+#         },
+#     }
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'Django_Blog',
-        'USER': 'sa',  # or your DB username
+        'USER': 'monica',  # or your DB username
         'PASSWORD': '12345',
         'HOST': 'localhost',  # or your SQL Server hostname
         'OPTIONS': {
@@ -115,6 +129,7 @@ DATABASES = {
         },
     }
 }
+
 
 
 # Password validation
