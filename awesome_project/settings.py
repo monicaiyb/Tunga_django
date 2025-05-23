@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'blog',
+    'rest_framework',
+     'blog',
     'todo'
 ]
 
@@ -55,6 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'awesome_project.urls'
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 TEMPLATES = [
     {
@@ -77,12 +82,12 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # DB_DRIVER = "ODBC Driver 17 for SQL Server"
@@ -116,19 +121,7 @@ WSGI_APPLICATION = 'awesome_project.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'Django_Blog',
-        'USER': 'monica',  # or your DB username
-        'PASSWORD': '12345',
-        'HOST': 'localhost',  # or your SQL Server hostname
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'extra_params': 'TrustServerCertificate=yes;Encrypt=yes;',
-        },
-    }
-}
+
 
 
 

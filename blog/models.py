@@ -16,4 +16,4 @@ class Blog (Model):
     description=CharField(max_length=500)
     created_at=DateTimeField(auto_now_add=True)
     completed=BooleanField(default=False)
-    artist = ForeignKey(Author, on_delete=CASCADE)
+    author = ForeignKey(Author, on_delete=CASCADE)
