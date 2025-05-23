@@ -1,7 +1,10 @@
-from django.urls import path
-
-from . import views
+# todo/todo_api/urls.py : API urls.py
+# from django.conf.urls import url
+from django.urls import path, include
+from .views import (
+    TodoListApiView,
+)
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path('api', TodoListApiView.as_view()),
 ]
